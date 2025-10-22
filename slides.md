@@ -45,7 +45,7 @@ layout: center
 ```mermaid {scale: 0.6}
 flowchart LR
     Start([Start]) --> Step1[Step 1: Simplex<br/>Calculate optimal cargo and optimal nodes]
-    Step1 --> Step2[Step 2: DFS<br/>Find a way through the graph for a given subset]
+    Step1 --> Step2[Step 2: DFS<br/>Find a way through the graph for all given subsets]
     Step2 --> Check{Path<br/>found?}
     Check -->|Yes| Success([Optimal combination of nodes found])
     Check -->|No| NextBest{More<br/>subsets?}
