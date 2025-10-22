@@ -45,17 +45,17 @@ We choose to Present the Profit Optimal Solution
 ```mermaid {scale: 0.6}
 flowchart LR
     Start([Start]) --> Step1[Step 1: Simplex<br/>Calculate optimal cargo and optimal nodes]
-    Step1 --> Step2[Step 2: DFS<br/>Find node combinations]
+    Step1 --> Step2[Step 2: DFS<br/>Find a way through the graph for a given subset]
     Step2 --> Check{Path<br/>found?}
-    Check -->|Yes| Success([Optimal Tour Found])
-    Check -->|No| Exclude[Exclude invalid combinations]
-    Exclude --> NextBest{More<br/>options?}
+    Check -->|Yes| Success([Optimal combination of nodes found])
+    Check -->|No| NextBest{More<br/>subsets?}
     NextBest -->|Yes| Step2
-    NextBest -->|No| NoSolution([No feasible solution])
+    NextBest -->|No| NewCon[Determine new constraint]
+    NewCon --> Step1
+    Step1
 
     style Start fill:#90EE90
     style Success fill:#FFD700
-    style NoSolution fill:#FFB6C6
 ```
 
 ---
@@ -92,13 +92,17 @@ Integer LP works in 3 Steps.
 
 ---
 
-# DFS
+# Depth First Search
 
-We utilize B&B to get to an Solution on average in faster than O(n!) time complexity.
+1. Receive subsets of nodes that lead to the determined optimal solution
+2. Try to find a way through the graph for every given subset
+    - track the tour coasts
+3. Three possible outcomes:
+    1. Only one subset has a connection from A->N: Finished!
+    2. More than one have a connection: Choose the one with the lowest tour coasts -> Finished!
+    3. No subset has a direct connection: Return to ILP with new constraint
 
-- branch out only to Nodes that are in the ideal solution.
-- start depth first search and find a Solution that will lead to proning of branches because of less optimal travel cost
-- repeat until optimal solution/solutions are found
+Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€)
 
 ---
 
