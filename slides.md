@@ -1,6 +1,6 @@
 ---
 theme: default
-background: https://images.unsplash.com/photo-1619075120156-f5729c752edf?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=jr-korpa-vg0Mph2RmI4-unsplash.jpg
+background: https://images.unsplash.com/photo-1612334001559-947862cc2202?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=jr-korpa-3XXSKa4jKaM-unsplash.jpg
 title: Optimization and Decision Making
 class: text-center
 drawings:
@@ -16,33 +16,26 @@ author: Tim, Valentin & Simon
 
 ---
 
-# Table of contents
-
-<Toc text-sm minDepth="1" maxDepth="2" />
-
----
-
 ## Optimal Criteria
 
 We identified 2 potential solutions that can be considered optimal.
 
-**Profit Optimal**
-Find solution where the primary goal is maximizing profit and secondarily minimizing travel cost.
+1. **Profit Optimal** Find solution where the primary goal is maximizing profit and secondarily minimizing travel cost.
 
-**Travel Cost Optimal**
-Find solution where the primary goal is minimizing travel cost and secondarily maximizing profit.
+2. **Travel Cost Optimal** Find solution where the primary goal is minimizing travel cost and secondarily maximizing profit.
 
-We choose to Present the Profit Optimal Solution
+Assumption visiting a node → pick up all items
 
-- assumption visiting a node → picking up all items there
+<br>
 
----
-layout: center
+**We choose to Present the Profit Optimal Solution**
+
 ---
 
 # Algorithm - Flow Chart
 
-```mermaid {scale: 0.6}
+<div class="grid place-items-center h-full">
+```mermaid {scale: 0.75}
 flowchart LR
     Start([Start]) --> Step1[Step 1: Simplex<br/>Calculate optimal cargo and optimal nodes]
     Step1 --> Step2[Step 2: BranchAndBound with DFS<br/>Find a way through the graph for all given subsets]
@@ -54,7 +47,10 @@ flowchart LR
 
     style Start fill:#90EE90
     style Success fill:#FFD700
+
 ```
+</div>
+
 
 ---
 hideInToc: true
@@ -66,41 +62,38 @@ hideInToc: true
 
 Our solution is only feasible if all constraints are satisfied:
 
-$$56 \leq 2 \cdot \text{gemstone} + 1 \cdot \text{epoxy} + 6 \cdot \text{copper}$$
-
-$$15 \leq \text{gemstone} + \text{epoxy} + \text{copper}$$
-
-$$\text{copper} \leq 2 \cdot \text{gemstone}$$
+1. $56 \leq 2 \cdot \text{gemstone} + 1 \cdot \text{epoxy} + 6 \cdot \text{copper}$
+2. $15 \leq \text{gemstone} + \text{epoxy} + \text{copper}$
+3. $\text{copper} \leq 2 \cdot \text{gemstone}$
 
 One can also assume that:
 
-$$\text{gemstone}, \text{epoxy}, \text{copper} \geq 0$$
-
-$$\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{Z}$$
+$\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{N}_0$
 
 ---
 
-# Integer Linear Programming
+## Integer Linear Programming
 
-Integer LP works in 3 Steps.
+Integer LP works in 3 steps:
 
 1. First solve LP without the integer constraints
 2. Run Branch and Bound on Solution and iteratively add integer / binary constraits to variables
 3. Find optimal solution with feasable variables
 
+Use **Indicator** variables for Nodes in Graph as additional constraint for simplex:
 
-Use **Indicator** variables for Nodes in Graph as additional constraint for Simplex
-- Indicator x = 0 or x = 1 
+- Indicator x = 0 or x = 1
 - Gemstones = 0B + 1C + 1D + 1E + 1F + 1G + 4H + 2I + 0J + 0L + 0M
 
 ---
 
-# Branch and Bound with Depth First Search
+# Branch and Bound
 
 1. Receive subsets of nodes that lead to the optimal solution
-2. Try to find a way through the graph for every given subset
-   - track the tour costs
-   - choose the tour with lowest cost
+2. Try to find a way through the subset of the graph for every subset
+   - Track the tour costs
+   - Choose the tour with lowest cost
+   - Use DFS
 3. Three possible outcomes:
    1. Only one subset has a connection from A 🠒 N: Finished!
    2. More than one have a connection: Choose the one with the lowest tour costs 🠒 Finished!
@@ -121,6 +114,17 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
   - In practice, Simplex is highly efficient
   - Most of the times, average case, when the inputs are slightly randomly perturbed
 
+#### Branch and Bound (Route Finding)
+
+- Worst-Case Complexity
+  - Exponential $O(k^n)$
+  - When no branches can be pruned
+- Average-Case Complexity
+  - Still exponential
+  - The efficiency is highly dependent on the quality of the "bound"
+
+---
+layout: two-cols
 ---
 
 ## For Profit Optimized Solution
@@ -129,17 +133,19 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
 
 - Optimal Resources: 4 Gemstones, 0 Epoxy , 8 Copper
 - Subsets that support the solution:
-  1.  \{E, I, D, J, L\}
-  2.  \{E, I, F, J, L\}
+  1.  $\{E, I, D, J, L\}$
+  2.  $\{E, I, F, J, L\}$
 
 **2. Branch and Bound with DFS**
 
-- Subset that leads through the graph: \{E, I, F, J, L\}
+- Subset that leads through the graph: $\{E, I, F, J, L\}$
   - tour: A 🠒 E 🠒 F 🠒 J 🠒 I 🠒 L 🠒 N
-  - value: 920€
-  - costs: 2 + 3 + 1 + 3 + 2 + 1 = 12
+  - value: 920 €
+  - costs: $2 + 3 + 1 + 3 + 2 + 1 = 12$
 
-![Network](./images/network.png){ class="w-1/2" }
+::right::
+
+![Network](./images/network.png)
 
 ---
 layout: center
@@ -151,8 +157,6 @@ hideInToc: true
 
 Questions?
 
----
-hideInToc: true
 ---
 
 # Appendix
@@ -185,10 +189,9 @@ subject to gemstone_collection:
 ```
 
 ---
-hideInToc: true
----
 
 # Appendix
+
 ```
 subject to epoxy_collection:
     x2 = 1*bB + 2*bC + 0*bD + 0*bE + 0*bF + 3*bG + 1*bH + 0*bI + 0*bJ + 1*bK + 0*bL + 3*bM;
