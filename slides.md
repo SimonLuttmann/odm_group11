@@ -21,8 +21,6 @@ author: Tim, Valentin & Simon
 <Toc text-sm minDepth="1" maxDepth="2" />
 
 ---
-title: Idea
----
 
 ## Optimal Criteria
 
@@ -38,6 +36,8 @@ We choose to Present the Profit Optimal Solution
 
 - assumption visiting a node → picking up all items there
 
+---
+layout: center
 ---
 
 # Algorithm - Flow Chart
@@ -64,7 +64,7 @@ hideInToc: true
 
 # Constraints
 
-## Feasibility
+### Feasibility
 
 Our solution is only feasible if all constraints are satisfied:
 
@@ -82,7 +82,7 @@ $$\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{Z}$$
 
 ---
 
-# Integer Linear Programming
+# Integer Linear Programming ?
 
 Integer LP works in 3 Steps.
 
@@ -96,11 +96,11 @@ Integer LP works in 3 Steps.
 
 1. Receive subsets of nodes that lead to the determined optimal solution
 2. Try to find a way through the graph for every given subset
-    - track the tour coasts
+   - track the tour coasts
 3. Three possible outcomes:
-    1. Only one subset has a connection from A->N: Finished!
-    2. More than one have a connection: Choose the one with the lowest tour coasts -> Finished!
-    3. No subset has a direct connection: Return to ILP with new constraint
+   1. Only one subset has a connection from A 🠒 N: Finished!
+   2. More than one have a connection: Choose the one with the lowest tour coasts 🠒 Finished!
+   3. No subset has a direct connection: Return to ILP with new constraint
 
 Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€)
 
@@ -108,50 +108,56 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
 
 # Consideration of Solution
 
-## Time complexity
+#### Simplex (Profit Maximization)
+
+- Worst-Case Complexity
+  - Exponential $O(2^n)$
+- Average-Case Complexity
+  - Polynomial $O(n^3)$
+  - In practice, Simplex is highly efficient
+  - Most of the times, average case, when the inputs are slightly randomly perturbed
+
+#### DfS (Route Finding)
+
+- Worst-Case Complexity
+  - $O(V + E)$
+  - $V$ is the number of nodes (Locations) and $E$ is the number of connections (Edges)
+- Average-Case Complexity
+  - $O(V + E)$
+  - The average-case runtime is generally the same as the worst-case
 
 ---
 
-# Results
+## For Profit Optimized Solution
 
-For Profit Optimized Solution
-
-**1. Integer LP (simplex -> Branch and Bound)**
+**1. Integer LP (simplex 🠒 Branch and Bound)**
 
 - Optimal Resources: 4 Gemstones, 0 Epoxy , 8 Copper
 - Subsets that support the solution:
-   1.  E, I, D, J, L
-   2.  E, I, F, J, L
+  1.  \{E, I, D, J, L\}
+  2.  \{E, I, F, J, L\}
 
 **2. DFS**
 
-- Subset that leads: E, I, F, J, L
-   - tour: A -> E -> F -> J -> I -> L -> N
-   - value: 920
-   - coasts: 2 + 3 + 1 + 3 + 2 + 1 = 12
+- Subset that leads through the graph: \{E, I, F, J, L\}
+  - tour: A 🠒 E 🠒 F 🠒 J 🠒 I 🠒 L 🠒 N
+  - value: 920€
+  - costs: 2 + 3 + 1 + 3 + 2 + 1 = 12
 
----
-
-# Summary
-
-The algorithm combines three powerful techniques to solve the profit-maximizing tour planning problem:
-
-- **ILP** for optimal cargo selection and for node identification
-- **DFS** for route validation
-
-<div class="pt-12">
-    A deterministic, constraint-aware, and optimality-guaranteeing approach
-</div>
+![Network](./images/network.png){ class="w-1/2" }
 
 ---
 layout: center
 class: text-center
+hideInToc: true
 ---
 
 # Thank You
 
 Questions?
 
+---
+hideInToc: true
 ---
 
 # Appendix
