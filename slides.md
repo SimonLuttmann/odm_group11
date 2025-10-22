@@ -16,6 +16,14 @@ author: Tim, Valentin & Simon
 
 ---
 
+# Table of contents
+
+<Toc text-sm minDepth="1" maxDepth="2" />
+
+---
+title: Idea
+---
+
 # Idea #1
 
 ## Optimal Criteria
@@ -30,6 +38,8 @@ Find solution where the primary goal is minimizing travel cost and secondarily m
 
 we choose to Present the Profit Optimal Solution
 
+---
+hideInToc: true
 ---
 
 # Idea #2
@@ -49,12 +59,6 @@ One can also assume that:
 $$\text{gemstone}, \text{epoxy}, \text{copper} \geq 0$$
 
 $$\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{Z}$$
-
----
-
-# Table of contents
-
-<Toc text-sm minDepth="1" maxDepth="2" />
 
 ---
 
@@ -366,12 +370,11 @@ If no combination works, exclude infeasible options and repeat with next-best ca
 
 # Algorithm Flow Diagram
 
-```mermaid {scale: 0.4}
-flowchart TD
-    Start([Start]) --> Step1[Step 1: MILP<br/>Calculate optimal cargo]
-    Step1 --> Step2[Step 2: Enumerated Knapsack<br/>Find node combinations]
-    Step2 --> Step3[Step 3: DFS<br/>Validate tour path]
-    Step3 --> Check{Path<br/>found?}
+```mermaid {scale: 0.6}
+flowchart LR
+    Start([Start]) --> Step1[Step 1: Simplex<br/>Calculate optimal cargo and optimal nodes]
+    Step1 --> Step2[Step 2: DFS<br/>Find node combinations]
+    Step2 --> Check{Path<br/>found?}
     Check -->|Yes| Success([Optimal Tour Found])
     Check -->|No| Exclude[Exclude invalid combinations]
     Exclude --> NextBest{More<br/>options?}
