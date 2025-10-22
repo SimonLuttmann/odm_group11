@@ -48,9 +48,7 @@ flowchart LR
     Step1 --> Step2[Step 2: DFS<br/>Find a way through the graph for all given subsets]
     Step2 --> Check{Path<br/>found?}
     Check -->|Yes| Success([Optimal combination of nodes found])
-    Check -->|No| NextBest{More<br/>subsets?}
-    NextBest -->|Yes| Step2
-    NextBest -->|No| NewCon[Determine new constraint]
+    Check -->|No| NewCon[Determine new constraint]
     NewCon --> Step1
     Step1
 
@@ -96,10 +94,10 @@ Integer LP works in 3 Steps.
 
 1. Receive subsets of nodes that lead to the determined optimal solution
 2. Try to find a way through the graph for every given subset
-   - track the tour coasts
+   - track the tour costs
 3. Three possible outcomes:
    1. Only one subset has a connection from A 🠒 N: Finished!
-   2. More than one have a connection: Choose the one with the lowest tour coasts 🠒 Finished!
+   2. More than one have a connection: Choose the one with the lowest tour costs 🠒 Finished!
    3. No subset has a direct connection: Return to ILP with new constraint
 
 Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€)
