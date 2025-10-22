@@ -40,7 +40,7 @@ We choose to Present the Profit Optimal Solution
 
 ---
 
-# Flow Chart
+# Algorithm - Flow Chart
 
 ```mermaid {scale: 0.6}
 flowchart LR
@@ -118,42 +118,26 @@ For Profit Optimized Solution
 
 **1. Integer LP (simplex -> Branch and Bound)**
 
-- Optimal Resources: (4,0,8)
-- Nodes Included: (E, I, J, L)
-- Nodes Possibly Included: (D, F)
+- Optimal Resources: 4 Gemstones, 0 Epoxy , 8 Copper
+- Subsets that support the solution:
+   1.  E, I, D, J, L
+   2.  E, I, F, J, L
 
-**2. B&B**
+**2. DFS**
 
-- Optimal Route (A→,...,→N)
+- Subset that leads: E, I, F, J, L
+   - tour: A -> E -> F -> J -> I -> L -> N
+   - value: 920
+   - coasts: 2 + 3 + 1 + 3 + 2 + 1 = 12
 
-- Profit: 920
-
-- Travel Cost:
-
-<!--
-**1. Integer LP (simplex → B&B)**
-
-Optimal Resources: (4,0,8)
-
-Solution 1: {E, I, D, J, L}
-
-Solution 2: {E, I, F, J, L}
-
-**2. B&B**
-
-Optimal Route (A→,...,→N)
-
-Profit: 920
-
-Travel Cost:
--->
+---
 
 # Summary
 
 The algorithm combines three powerful techniques to solve the profit-maximizing tour planning problem:
 
-**ILP** for optimal cargo selection and for node identification
-**DFS** for route validation
+- **ILP** for optimal cargo selection and for node identification
+- **DFS** for route validation
 
 <div class="pt-12">
     A deterministic, constraint-aware, and optimality-guaranteeing approach
