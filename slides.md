@@ -80,13 +80,18 @@ $$\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{Z}$$
 
 ---
 
-# Integer Linear Programming ?
+# Integer Linear Programming
 
 Integer LP works in 3 Steps.
 
 1. First solve LP without the integer constraints
 2. Run Branch and Bound on Solution and iteratively add integer / binary constraits to variables
 3. Find optimal solution with feasable variables
+
+
+Use **Indicator** variables for Nodes in Graph as additional constraint for Simplex
+- Indicator x = 0 or x = 1 
+- Gemstones = 0B + 1C + 1D + 1E + 1F + 1G + 4H + 2I + 0J + 0L + 0M
 
 ---
 
@@ -176,8 +181,18 @@ var x3 >= 0, integer;  # Total copper
 subject to gemstone_collection:
     x1 = 0*bB + 1*bC + 1*bD + 1*bE + 1*bF + 1*bG + 4*bH + 2*bI + 0*bJ + 1*bK + 0*bL + 0*bM;
 
+
+```
+
+---
+hideInToc: true
+---
+
+# Appendix
+```
 subject to epoxy_collection:
     x2 = 1*bB + 2*bC + 0*bD + 0*bE + 0*bF + 3*bG + 1*bH + 0*bI + 0*bJ + 1*bK + 0*bL + 3*bM;
+
 
 subject to copper_collection:
     x3 = 1*bB + 0*bC + 0*bD + 2*bE + 0*bF + 2*bG + 0*bH + 1*bI + 3*bJ + 3*bK + 2*bL + 0*bM;
