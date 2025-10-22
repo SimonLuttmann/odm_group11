@@ -45,7 +45,7 @@ layout: center
 ```mermaid {scale: 0.6}
 flowchart LR
     Start([Start]) --> Step1[Step 1: Simplex<br/>Calculate optimal cargo and optimal nodes]
-    Step1 --> Step2[Step 2: DFS<br/>Find a way through the graph for all given subsets]
+    Step1 --> Step2[Step 2: BranchAndBound with DFS<br/>Find a way through the graph for all given subsets]
     Step2 --> Check{Path<br/>found?}
     Check -->|Yes| Success([Optimal combination of nodes found])
     Check -->|No| NewCon[Determine new constraint]
@@ -90,11 +90,12 @@ Integer LP works in 3 Steps.
 
 ---
 
-# Depth First Search
+# Branch and Bound with Depth First Search
 
 1. Receive subsets of nodes that lead to the optimal solution
 2. Try to find a way through the graph for every given subset
    - track the tour costs
+   - choose the tour with lowest cost
 3. Three possible outcomes:
    1. Only one subset has a connection from A 🠒 N: Finished!
    2. More than one have a connection: Choose the one with the lowest tour costs 🠒 Finished!
@@ -115,15 +116,6 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
   - In practice, Simplex is highly efficient
   - Most of the times, average case, when the inputs are slightly randomly perturbed
 
-#### DfS (Route Finding)
-
-- Worst-Case Complexity
-  - $O(V + E)$
-  - $V$ is the number of nodes (Locations) and $E$ is the number of connections (Edges)
-- Average-Case Complexity
-  - $O(V + E)$
-  - The average-case runtime is generally the same as the worst-case
-
 ---
 
 ## For Profit Optimized Solution
@@ -135,7 +127,7 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
   1.  \{E, I, D, J, L\}
   2.  \{E, I, F, J, L\}
 
-**2. DFS**
+**2. Branch and Bound with DFS**
 
 - Subset that leads through the graph: \{E, I, F, J, L\}
   - tour: A 🠒 E 🠒 F 🠒 J 🠒 I 🠒 L 🠒 N
