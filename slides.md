@@ -92,7 +92,7 @@ Integer LP works in 3 Steps.
 
 # Depth First Search
 
-1. Receive subsets of nodes that lead to the determined optimal solution
+1. Receive subsets of nodes that lead to the optimal solution
 2. Try to find a way through the graph for every given subset
    - track the tour costs
 3. Three possible outcomes:
