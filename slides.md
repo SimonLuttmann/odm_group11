@@ -62,13 +62,17 @@ hideInToc: true
 
 Our solution is only feasible if all constraints are satisfied:
 
-1. $56 \leq 2 \cdot \text{gemstone} + 1 \cdot \text{epoxy} + 6 \cdot \text{copper}$
-2. $15 \leq \text{gemstone} + \text{epoxy} + \text{copper}$
+1. 2 $\cdot \text{gemstone} + 1 \cdot \text{epoxy} + 6 \cdot \text{copper} \leq 56$
+2. $\text{gemstone} + \text{epoxy} + \text{copper} \leq 15$
 3. $\text{copper} \leq 2 \cdot \text{gemstone}$
 
 One can also assume that:
 
 $\text{gemstone}, \text{epoxy}, \text{copper} \in \mathbb{N}_0$
+
+<!--
+1. The warehouse can only store 56 tons, 2. The truck can only carry 15 units, 3. We do not want to store more than twice as many units of copper as gemstones. Only natural numbers and 0 is accepted, because we cannot carry half of a copper.
+-->
 
 ---
 
@@ -122,6 +126,10 @@ Annotation to 3.3: New constraint is about the value of the goods (e.g. < 920€
 - Average-Case Complexity
   - Still exponential
   - The efficiency is highly dependent on the quality of the "bound"
+
+<!--
+Keyword here: Smoothed Analysis
+-->
 
 ---
 layout: two-cols
