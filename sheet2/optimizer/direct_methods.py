@@ -66,8 +66,8 @@ def coordinate_search(bb, objective, x0, step_size=0.1, reduction_factor=0.5, ma
             current_step *= reduction_factor
         
         iteration += 1
-    
-    print(f"Coordinate Search: {iteration} iterations, final step size: {current_step:.6f}")
+
+    print(f"Coordinate Search: {iteration} iterations")
     return x, history
 
 
@@ -150,7 +150,7 @@ def hooke_jeeves(bb, objective, x0, step_size=0.1, reduction_factor=0.5, max_ite
         
         iteration += 1
     
-    print(f"Hooke & Jeeves: {iteration} iterations, final step size: {current_step:.6f}")
+    print(f"Hooke & Jeeves: {iteration} iterations")
     return x_base, history
 
 
@@ -258,5 +258,6 @@ def nelder_mead(bb, objective, x0, max_iter=1000, tol=1e-6, alpha=1.0, gamma=2.0
     # Return the best point
     indices = np.argsort(f_values)
     x_best = simplex[indices[0]]
+    print(f"Nelder-Mead: {iteration} iterations")
     
     return x_best, history

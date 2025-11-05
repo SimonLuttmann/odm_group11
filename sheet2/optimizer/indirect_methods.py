@@ -42,7 +42,9 @@ def sgd(bb, objective, x0, learning_rate=0.01, max_iter=1000, tol=1e-6):
         
         # Update step
         x = x - learning_rate * grad
-    
+
+    print(f"SGD: {i} iterations")
+
     return x, history
 
 
@@ -82,6 +84,8 @@ def momentum(bb, objective, x0, learning_rate=0.01, beta=0.9, max_iter=1000, tol
         # Update velocity and position
         v = beta * v + learning_rate * grad
         x = x - v
+
+    print(f"Momentum: {i} iterations")
     
     return x, history
 
@@ -126,6 +130,8 @@ def rmsprop(bb, objective, x0, learning_rate=0.01, beta=0.9, epsilon=1e-8, max_i
         # Update parameters
         x = x - learning_rate * grad / (np.sqrt(s) + epsilon)
     
+    print(f"RMSProp: {i} iterations")
+
     return x, history
 
 
@@ -176,4 +182,6 @@ def adam(bb, objective, x0, learning_rate=0.01, beta1=0.9, beta2=0.999, epsilon=
         # Update parameters
         x = x - learning_rate * m_hat / (np.sqrt(v_hat) + epsilon)
     
+    print(f"Adam: {i} iterations")
+
     return x, history
