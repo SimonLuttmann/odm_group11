@@ -1,0 +1,28 @@
+# .gitignore for this project
+# Ignore node modules
+node_modules/
+
+# Environment files
+.env
+
+# Build / output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
+
+# Editor directories and files
+.vscode/
+*.swp
+
+# Optional lockfiles you may want to ignore depending on workflow
+# package-lock.json
+# pnpm-lock.yaml
+# yarn.lock
+
