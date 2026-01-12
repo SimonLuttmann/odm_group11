@@ -1,0 +1,50 @@
+{
+  "config": {
+    "pop_size": 40,
+    "n_gen": 80,
+    "R_simulations": 100,
+    "total_evaluations": 3200,
+    "seed": 42
+  },
+  "results": {
+    "NSGA-II": {
+      "hypervolume": 3.208300000000001,
+      "n_solutions": 6,
+      "runtime_seconds": 7.252788782119751,
+      "win_rate_range": [
+        0.79,
+        0.6
+      ],
+      "trick_changes_range": [
+        4.11,
+        3.53
+      ]
+    },
+    "MOEA/D": {
+      "hypervolume": 2.8606000000000003,
+      "n_solutions": 34,
+      "runtime_seconds": 8.232699871063232,
+      "win_rate_range": [
+        0.81,
+        0.57
+      ],
+      "trick_changes_range": [
+        3.57,
+        3.19
+      ]
+    },
+    "SMS-EMOA": {
+      "hypervolume": 3.3766000000000003,
+      "n_solutions": 11,
+      "runtime_seconds": 7.242147922515869,
+      "win_rate_range": [
+        0.79,
+        0.51
+      ],
+      "trick_changes_range": [
+        4.34,
+        3.79
+      ]
+    }
+  }
+}

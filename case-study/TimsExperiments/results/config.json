@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "K": 22,
+  "L": 4,
+  "n_var": 88,
+  "xl": 1.0,
+  "xu": 10.0,
+  "R_eval_fast": 500,
+  "R_eval_final": 1000,
+  "exploration_stats": {
+    "win_rate_range": [
+      0.42,
+      0.69
+    ],
+    "trick_changes_range": [
+      1.33,
+      2.66
+    ]
+  }
+}
