@@ -1,6 +1,6 @@
 # Editors
-.vscode/
-.idea/
+**/.vscode/
+**/.idea/
 
 # Mac/OSX
 .DS_Store
@@ -9,7 +9,7 @@
 Thumbs.db
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -104,4 +104,4 @@ venv.bak/
 dmypy.json
 
 # node_modules
-node_modules/
+**/node_modules/
