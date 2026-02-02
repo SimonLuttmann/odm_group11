@@ -30,7 +30,7 @@ Diese Case Study löst das Problem der automatischen Spielbalancierung für **To
 ## 📁 Projektstruktur
 
 ```
-TimsExperiments/
+Tim/
 │
 ├── README.md                          ← Diese Datei
 ├── run_pipeline.ipynb                 ← ⚡ Steuerungs-Notebook (Führt alles aus)
@@ -260,7 +260,7 @@ Die folgenden Plots sind direkt für das A0-Poster verwendbar:
 
 ```bash
 # 1. In den Ordner wechseln
-cd /Users/tim.strauss/ODM/odm_sheet1/case-study/TimsExperiments
+cd /Users/tim.strauss/ODM/odm_sheet1/case-study/Tim
 
 # 2. Pipeline ausführen (empfohlen):
 #    Öffne und starte `run_pipeline.ipynb`
