@@ -42,7 +42,16 @@ TimsExperiments/
 ├── 04_algorithm_comparison.ipynb      ← Algorithmen-Vergleich (NSGA-II vs MOEA/D vs SMS-EMOA)
 ├── 05_parameter_study.ipynb           ← Parameter-Studie (Einfluss von Deckgröße K)
 │
-├── results/                           ← Generierte Ergebnisse
+├── 06_multiplayer_setup.ipynb         ← 🆕 Multiplayer Setup (3+ Spieler)
+├── 07_multiplayer_optimization.ipynb  ← 🆕 Multiplayer Optimierung
+├── 08_multiplayer_configurations.ipynb ← 🆕 Konfigurations-Vergleich
+├── 09_multiplayer_parameter_study.ipynb ← 🆕 K-Studie für Multiplayer
+├── 10_optimal_configuration.ipynb     ← 🆕 Optimale Konfiguration (2-6 Spieler)
+│
+├── 11_landscape_analysis.ipynb        ← 🔬 Fitness Landscape Analysis (ELA, FDC, Ruggedness)
+├── 07_multiplayer_optimization.ipynb  ← 🆕 Multiplayer Optimierung
+│
+├── results/                           ← Generierte Ergebnisse (2-Spieler)
 │   ├── config.json                    ← Konfiguration
 │   ├── pareto_front_X.npy             ← Lösungen (Deck-Vektoren)
 │   ├── pareto_front_F.npy             ← Objective-Werte
@@ -52,7 +61,15 @@ TimsExperiments/
 │   ├── analysis_results.json          ← Analyse-Ergebnisse (HV etc.)
 │   └── algorithm_comparison.json      ← Vergleichs-Ergebnisse
 │
-└── plots/                             ← Generierte Visualisierungen
+├── results/multiplayer/               ← 🆕 Multiplayer-Ergebnisse (getrennt!)
+│   ├── config.json                    ← Multiplayer-Konfiguration
+│   ├── pareto_front_X.npy
+│   ├── pareto_front_F.npy
+│   ├── validated_front.csv
+│   ├── selected_decks.json
+│   └── optimization_results.json
+│
+├── plots/                             ← Generierte Visualisierungen (2-Spieler)
     ├── noisiness_test.png             ← Variabilität der Metriken
     ├── objective_space_exploration.png
     ├── pareto_front_fast.png
@@ -310,3 +327,124 @@ Die Untersuchung von $K \in \{10, 22, 34\}$ (`05_parameter_study.ipynb`) zeigt:
 | **Different optimizers?** | ✅ NSGA-II und SMS-EMOA performen ähnlich stark und robust. MOEA/D fällt ab. |
 | **Impact of K?** | ✅ $K$ skaliert die absolute Anzahl der Trick Changes, ändert aber nicht die Fairness-Balance. |
 | **Influence of R?** | ✅ Hohes R (1000) ist essenziell für die finale Bewertung, da R=100 zu optimistisch verzerrt ist. |
+
+---
+
+## 🎮 Multiplayer-Erweiterung (3+ Spieler)
+
+Die Multiplayer-Erweiterung ermöglicht die Analyse von Top Trumps mit **mehr als 2 Spielern** und **konfigurierbaren Strategien**.
+
+### Konfigurierbare Spieler
+
+| Strategie | Beschreibung |
+|-----------|-------------|
+| `p0` | **Anfänger:** Wählt Kategorie mit höchstem normalisierten Wert |
+| `p4` | **Experte:** Berechnet Gewinnwahrscheinlichkeit gegen verbleibende Karten |
+
+### Beispiel-Konfigurationen
+
+```python
+# 2 Spieler (Standard)
+PLAYER_STRATEGIES = ['p4', 'p0']
+
+# 3 Spieler: 1 Experte vs 2 Anfänger
+PLAYER_STRATEGIES = ['p4', 'p0', 'p0']
+
+# 3 Spieler: 2 Experten vs 1 Anfänger
+PLAYER_STRATEGIES = ['p4', 'p4', 'p0']
+
+# 4 Spieler: 1 Experte vs 3 Anfänger
+PLAYER_STRATEGIES = ['p4', 'p0', 'p0', 'p0']
+```
+
+### Wichtige Unterschiede
+
+| Aspekt | 2-Spieler | Multiplayer |
+|--------|-----------|-------------|
+| **Karten pro Spieler** | K/2 | K/N |
+| **Metriken** | p4 Win Rate | Expert(s) Win Rate |
+| **Tie-Handling** | Selten | Häufiger |
+| **Ergebnisse** | `results/` | `results/multiplayer/` |
+| **Plots** | `plots/` | `plots/multiplayer/` |
+
+### Multiplayer-Workflow
+
+```
+┌─────────────────────────────────────┐
+│  06_multiplayer_setup.ipynb         │
+│  ─────────────────────────────────  │
+│  • Spieler-Konfiguration wählen     │
+│  • Simulation testen                │
+│  • Sanity Checks durchführen        │
+│  • results/multiplayer/config.json  │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│  07_multiplayer_optimization.ipynb  │
+│  ─────────────────────────────────  │
+│  • NSGA-II Optimierung              │
+│  • Validierung mit R=1000           │
+│  • Pareto-Front & Analyse           │
+└─────────────────────────────────────┘
+```
+
+### Hinweise
+
+- **Deckgröße K muss durch Spieleranzahl teilbar sein!** (z.B. K=24 für 3 oder 4 Spieler)
+- Ergebnisse werden **separat** in `results/multiplayer/` gespeichert
+- Die 2-Spieler-Analyse bleibt **vollständig unberührt**
+
+### Erweiterte Multiplayer-Analysen
+
+```
+┌─────────────────────────────────────────┐
+│  08_multiplayer_configurations.ipynb    │
+│  ─────────────────────────────────────  │
+│  Vergleicht verschiedene Konfigurationen│
+│  • 2P: 1v1 (Baseline)                   │
+│  • 3P: 1v2, 2v1                         │
+│  • 4P: 1v3, 2v2                         │
+│  → results/multiplayer_configs/         │
+└─────────────────────────────────────────┘
+
+┌─────────────────────────────────────────┐
+│  09_multiplayer_parameter_study.ipynb   │
+│  ─────────────────────────────────────  │
+│  Parameter-Studie: Kartenzahl K         │
+│  • K = 12, 18, 24, 30, 36               │
+│  • Korrelationsanalyse                  │
+│  → results/multiplayer_param_study/     │
+└─────────────────────────────────────────┘
+```
+
+### Fragestellungen der erweiterten Analysen
+
+| Notebook | Fragestellung |
+|----------|--------------|
+| 08 | Wie verändert sich die Spieldynamik mit mehr Spielern? |
+| 08 | Ist 2v2 fairer als 1v3? |
+| 08 | Wie stark ist der Expert-Advantage bei verschiedenen Konstellationen? |
+| 09 | Beeinflusst die Kartenzahl die Fairness bei Multiplayer? |
+| 09 | Gibt es ein optimales K für Multiplayer? |
+
+### Optimale Konfiguration (10_optimal_configuration.ipynb)
+
+Systematische Suche nach der besten Spielerkonfiguration für K=22, L=4:
+
+**Getestete Konfigurationen:**
+- 2 Spieler: 1E vs 1A
+- 3 Spieler: 1E vs 2A, 2E vs 1A
+- 4 Spieler: 1E vs 3A, 2E vs 2A, 3E vs 1A
+- 5 Spieler: 1E vs 4A, 2E vs 3A, 3E vs 2A, 4E vs 1A
+- 6 Spieler: 1E vs 5A, 2E vs 4A, 3E vs 3A, 4E vs 2A, 5E vs 1A
+
+**Metriken:**
+| Metrik | Beschreibung |
+|--------|-------------|
+| Fairness Score | Focus Expert Win Rate (Skill wird belohnt) |
+| Excitement Score | Trick Changes / Max mögliche Tricks |
+| Combined Score | (Fairness + Excitement) / 2 |
+| Hypervolume | Qualität der gesamten Pareto-Front |
+
+**Ergebnisse in:** `results/optimal_config/`

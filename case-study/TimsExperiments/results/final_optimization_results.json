@@ -1,0 +1,118 @@
+{
+  "config": {
+    "algorithm": "NSGA-II",
+    "hyperparameters": {
+      "pop_size": 230.0,
+      "eta_crossover": 18.557523580101787,
+      "eta_mutation": 16.672067054749483,
+      "crossover_prob": 0.7806796324592887,
+      "hypervolume_min": 4.140762,
+      "hypervolume_max": 4.262678,
+      "runtime_seconds": 3641.215940952301,
+      "n_partitions": NaN
+    },
+    "R": 2500,
+    "generations": 200,
+    "n_seeds": 10,
+    "n_workers": 10,
+    "K": 22,
+    "L": 4,
+    "total_runtime_minutes": 53.714659269650774
+  },
+  "statistics": {
+    "hypervolume_mean": 4.107830288000001,
+    "hypervolume_std": 0.10803668088143686,
+    "hypervolume_min": 3.890668319999999,
+    "hypervolume_max": 4.25886752,
+    "combined_hypervolume": 4.2815807999999995,
+    "combined_n_solutions": 99,
+    "successful_runs": 10,
+    "failed_runs": 0
+  },
+  "runs": [
+    {
+      "seed": 44,
+      "hypervolume": 4.044000800000003,
+      "n_solutions": 65,
+      "runtime_seconds": 3091.8022468090057,
+      "status": "completed"
+    },
+    {
+      "seed": 42,
+      "hypervolume": 4.112173919999999,
+      "n_solutions": 73,
+      "runtime_seconds": 3099.898008823395,
+      "status": "completed"
+    },
+    {
+      "seed": 47,
+      "hypervolume": 4.25886752,
+      "n_solutions": 88,
+      "runtime_seconds": 3161.577944755554,
+      "status": "completed"
+    },
+    {
+      "seed": 48,
+      "hypervolume": 3.9946452799999985,
+      "n_solutions": 58,
+      "runtime_seconds": 3167.0509481430054,
+      "status": "completed"
+    },
+    {
+      "seed": 43,
+      "hypervolume": 4.222174560000001,
+      "n_solutions": 87,
+      "runtime_seconds": 3169.6091163158417,
+      "status": "completed"
+    },
+    {
+      "seed": 51,
+      "hypervolume": 4.17833856,
+      "n_solutions": 81,
+      "runtime_seconds": 3175.1488251686096,
+      "status": "completed"
+    },
+    {
+      "seed": 46,
+      "hypervolume": 3.890668319999999,
+      "n_solutions": 67,
+      "runtime_seconds": 3187.7439131736755,
+      "status": "completed"
+    },
+    {
+      "seed": 49,
+      "hypervolume": 4.07184256,
+      "n_solutions": 76,
+      "runtime_seconds": 3194.2508821487427,
+      "status": "completed"
+    },
+    {
+      "seed": 45,
+      "hypervolume": 4.20962368,
+      "n_solutions": 83,
+      "runtime_seconds": 3194.7159430980682,
+      "status": "completed"
+    },
+    {
+      "seed": 50,
+      "hypervolume": 4.095967680000001,
+      "n_solutions": 66,
+      "runtime_seconds": 3222.299217939377,
+      "status": "completed"
+    }
+  ],
+  "extremes": {
+    "best_fairness": {
+      "fairness": -0.6404,
+      "excitement": -4.8976
+    },
+    "best_excitement": {
+      "fairness": -0.924,
+      "excitement": -2.4024
+    },
+    "knee_point": {
+      "fairness": -0.924,
+      "excitement": -2.4024
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pop_size": 80,
+  "n_gen": 150,
+  "R_eval_fast": 1000,
+  "R_eval_final": 1500,
+  "optimization_time_s": 264.78927206993103,
+  "n_solutions": 13,
+  "hypervolume_fast": 3.4657559999999994,
+  "hypervolume_validated": 3.252668444444444,
+  "player_strategies": [
+    "p4",
+    "p0",
+    "p0"
+  ],
+  "convergence": {
+    "gen_90_pct": 43,
+    "gen_95_pct": 53,
+    "final_hv": 3.4657559999999994
+  }
+}

@@ -1,25 +1,25 @@
 {
-  "hypervolume": 3.6651749999999996,
+  "hypervolume": 3.552361777777778,
   "reference_point": [
     0.0,
     0.0
   ],
-  "n_solutions": 22,
+  "n_solutions": 16,
   "selected_decks": {
     "Fairness-Max": {
-      "idx": 2,
-      "win_rate": 0.839,
-      "trick_changes": 3.074
+      "idx": 14,
+      "win_rate": 0.8506666666666667,
+      "trick_changes": 2.996
     },
     "Excitement-Max": {
-      "idx": 13,
-      "win_rate": 0.664,
-      "trick_changes": 4.48
+      "idx": 7,
+      "win_rate": 0.7173333333333334,
+      "trick_changes": 4.255333333333334
     },
     "Knee-Point": {
-      "idx": 12,
-      "win_rate": 0.801,
-      "trick_changes": 3.781
+      "idx": 0,
+      "win_rate": 0.78,
+      "trick_changes": 3.9833333333333334
     }
   }
 }

@@ -4,21 +4,21 @@
     "n_gen": 200,
     "crossover_eta": 15,
     "mutation_eta": 20,
-    "R_simulations": 500
+    "R_simulations": 1000
   },
-  "elapsed_time_seconds": 234.16878604888916,
-  "validation_time_seconds": 0.6007399559020996,
-  "n_solutions": 22,
+  "elapsed_time_seconds": 464.79844903945923,
+  "validation_time_seconds": 1.0632927417755127,
+  "n_solutions": 16,
   "fast_stats": {
-    "win_rate_min": 0.698,
-    "win_rate_max": 0.912,
-    "trick_changes_min": 3.052,
-    "trick_changes_max": 4.684
+    "win_rate_min": 0.739,
+    "win_rate_max": 0.881,
+    "trick_changes_min": 2.997,
+    "trick_changes_max": 4.301
   },
   "validated_stats": {
-    "win_rate_min": 0.658,
-    "win_rate_max": 0.839,
-    "trick_changes_min": 2.976,
-    "trick_changes_max": 4.48
+    "win_rate_min": 0.7173333333333334,
+    "win_rate_max": 0.8506666666666667,
+    "trick_changes_min": 2.996,
+    "trick_changes_max": 4.255333333333334
   }
 }

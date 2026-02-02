@@ -5,8 +5,8 @@
   "n_var": 88,
   "xl": 1.0,
   "xu": 10.0,
-  "R_eval_fast": 500,
-  "R_eval_final": 1000,
+  "R_eval_fast": 1000,
+  "R_eval_final": 1500,
   "exploration_stats": {
     "win_rate_range": [
       0.42,

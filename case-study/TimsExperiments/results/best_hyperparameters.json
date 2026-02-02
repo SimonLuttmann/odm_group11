@@ -1,0 +1,23 @@
+{
+  "NSGA-II": {
+    "pop_size": 230,
+    "eta_crossover": 18.557523580101787,
+    "eta_mutation": 16.672067054749483,
+    "crossover_prob": 0.7806796324592887,
+    "hypervolume": 4.1890264
+  },
+  "SMS-EMOA": {
+    "pop_size": 230,
+    "eta_crossover": 19.14143753867365,
+    "eta_mutation": 25.860265505247146,
+    "crossover_prob": 0.9627414011273695,
+    "hypervolume": 4.1050472
+  },
+  "NSGA-III": {
+    "pop_size": 140,
+    "eta_crossover": 6.3753416091134705,
+    "eta_mutation": 19.863306691118574,
+    "crossover_prob": 0.8761412941598613,
+    "hypervolume": 3.9715008000000003
+  }
+}

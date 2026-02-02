@@ -1,0 +1,292 @@
+{
+  "2P_1E_1A": {
+    "config": {
+      "name": "2P_1E_1A",
+      "n_players": 2,
+      "n_experts": 1,
+      "n_beginners": 1,
+      "strategies": [
+        "p4",
+        "p0"
+      ],
+      "cards_per_player": 12,
+      "random_wr": 0.5
+    },
+    "hypervolume": 3.884745777777778,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.828,
+      "trick_changes": 4.189333333333333
+    },
+    "fairness_score": 0.828,
+    "excitement_score": 0.3491111111111111,
+    "combined_score": 0.5885555555555555,
+    "stats": {
+      "focus_expert_wr_mean": 0.8412380952380953,
+      "focus_expert_wr_min": 0.7866666666666666,
+      "focus_expert_wr_max": 0.8813333333333333,
+      "trick_changes_mean": 4.061238095238095,
+      "tie_rate_mean": 0.12114285714285715,
+      "n_solutions": 7
+    }
+  },
+  "2P_all_E": {
+    "config": {
+      "name": "2P_all_E",
+      "n_players": 2,
+      "n_experts": 2,
+      "n_beginners": 0,
+      "strategies": [
+        "p4",
+        "p4"
+      ],
+      "cards_per_player": 12,
+      "random_wr": 1.0
+    },
+    "hypervolume": 2.6450835555555554,
+    "knee_point": {
+      "idx": 1,
+      "focus_expert_win_rate": 0.5813333333333334,
+      "trick_changes": 4.419333333333333
+    },
+    "fairness_score": 0.5813333333333334,
+    "excitement_score": 0.36827777777777776,
+    "combined_score": 0.4748055555555556,
+    "stats": {
+      "focus_expert_wr_mean": 0.5900000000000001,
+      "focus_expert_wr_min": 0.5813333333333334,
+      "focus_expert_wr_max": 0.5986666666666667,
+      "trick_changes_mean": 4.4013333333333335,
+      "tie_rate_mean": 0.18666666666666665,
+      "n_solutions": 2
+    }
+  },
+  "3P_1E_2A": {
+    "config": {
+      "name": "3P_1E_2A",
+      "n_players": 3,
+      "n_experts": 1,
+      "n_beginners": 2,
+      "strategies": [
+        "p4",
+        "p0",
+        "p0"
+      ],
+      "cards_per_player": 8,
+      "random_wr": 0.3333333333333333
+    },
+    "hypervolume": 2.5361417777777775,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.5586666666666666,
+      "trick_changes": 4.3806666666666665
+    },
+    "fairness_score": 0.5586666666666666,
+    "excitement_score": 0.5475833333333333,
+    "combined_score": 0.553125,
+    "stats": {
+      "focus_expert_wr_mean": 0.5522666666666667,
+      "focus_expert_wr_min": 0.5073333333333333,
+      "focus_expert_wr_max": 0.5753333333333334,
+      "trick_changes_mean": 4.3617333333333335,
+      "tie_rate_mean": 0.22640000000000002,
+      "n_solutions": 5
+    }
+  },
+  "3P_2E_1A": {
+    "config": {
+      "name": "3P_2E_1A",
+      "n_players": 3,
+      "n_experts": 2,
+      "n_beginners": 1,
+      "strategies": [
+        "p4",
+        "p4",
+        "p0"
+      ],
+      "cards_per_player": 8,
+      "random_wr": 0.6666666666666666
+    },
+    "hypervolume": 2.020922666666667,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.462,
+      "trick_changes": 4.368
+    },
+    "fairness_score": 0.462,
+    "excitement_score": 0.546,
+    "combined_score": 0.504,
+    "stats": {
+      "focus_expert_wr_mean": 0.4623333333333334,
+      "focus_expert_wr_min": 0.462,
+      "focus_expert_wr_max": 0.46266666666666667,
+      "trick_changes_mean": 4.364000000000001,
+      "tie_rate_mean": 0.223,
+      "n_solutions": 2
+    }
+  },
+  "3P_all_E": {
+    "config": {
+      "name": "3P_all_E",
+      "n_players": 3,
+      "n_experts": 3,
+      "n_beginners": 0,
+      "strategies": [
+        "p4",
+        "p4",
+        "p4"
+      ],
+      "cards_per_player": 8,
+      "random_wr": 1.0
+    },
+    "hypervolume": 1.6992902222222221,
+    "knee_point": {
+      "idx": 2,
+      "focus_expert_win_rate": 0.394,
+      "trick_changes": 4.080666666666667
+    },
+    "fairness_score": 0.394,
+    "excitement_score": 0.5100833333333333,
+    "combined_score": 0.4520416666666667,
+    "stats": {
+      "focus_expert_wr_mean": 0.4022222222222222,
+      "focus_expert_wr_min": 0.394,
+      "focus_expert_wr_max": 0.4166666666666667,
+      "trick_changes_mean": 4.057111111111111,
+      "tie_rate_mean": 0.21444444444444447,
+      "n_solutions": 3
+    }
+  },
+  "4P_1E_3A": {
+    "config": {
+      "name": "4P_1E_3A",
+      "n_players": 4,
+      "n_experts": 1,
+      "n_beginners": 3,
+      "strategies": [
+        "p4",
+        "p0",
+        "p0",
+        "p0"
+      ],
+      "cards_per_player": 6,
+      "random_wr": 0.25
+    },
+    "hypervolume": 1.8666622222222224,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.464,
+      "trick_changes": 4.016666666666667
+    },
+    "fairness_score": 0.464,
+    "excitement_score": 0.6694444444444444,
+    "combined_score": 0.5667222222222222,
+    "stats": {
+      "focus_expert_wr_mean": 0.45166666666666666,
+      "focus_expert_wr_min": 0.43933333333333335,
+      "focus_expert_wr_max": 0.464,
+      "trick_changes_mean": 4.02,
+      "tie_rate_mean": 0.31166666666666665,
+      "n_solutions": 2
+    }
+  },
+  "4P_2E_2A": {
+    "config": {
+      "name": "4P_2E_2A",
+      "n_players": 4,
+      "n_experts": 2,
+      "n_beginners": 2,
+      "strategies": [
+        "p4",
+        "p4",
+        "p0",
+        "p0"
+      ],
+      "cards_per_player": 6,
+      "random_wr": 0.5
+    },
+    "hypervolume": 1.511111111111111,
+    "knee_point": {
+      "idx": 2,
+      "focus_expert_win_rate": 0.35933333333333334,
+      "trick_changes": 3.97
+    },
+    "fairness_score": 0.35933333333333334,
+    "excitement_score": 0.6616666666666667,
+    "combined_score": 0.5105000000000001,
+    "stats": {
+      "focus_expert_wr_mean": 0.35577777777777775,
+      "focus_expert_wr_min": 0.3293333333333333,
+      "focus_expert_wr_max": 0.37866666666666665,
+      "trick_changes_mean": 3.947777777777778,
+      "tie_rate_mean": 0.30777777777777776,
+      "n_solutions": 3
+    }
+  },
+  "4P_3E_1A": {
+    "config": {
+      "name": "4P_3E_1A",
+      "n_players": 4,
+      "n_experts": 3,
+      "n_beginners": 1,
+      "strategies": [
+        "p4",
+        "p4",
+        "p4",
+        "p0"
+      ],
+      "cards_per_player": 6,
+      "random_wr": 0.75
+    },
+    "hypervolume": 1.3164093333333335,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.344,
+      "trick_changes": 3.7053333333333334
+    },
+    "fairness_score": 0.344,
+    "excitement_score": 0.6175555555555555,
+    "combined_score": 0.48077777777777775,
+    "stats": {
+      "focus_expert_wr_mean": 0.3496666666666667,
+      "focus_expert_wr_min": 0.344,
+      "focus_expert_wr_max": 0.35533333333333333,
+      "trick_changes_mean": 3.695666666666667,
+      "tie_rate_mean": 0.272,
+      "n_solutions": 2
+    }
+  },
+  "4P_all_E": {
+    "config": {
+      "name": "4P_all_E",
+      "n_players": 4,
+      "n_experts": 4,
+      "n_beginners": 0,
+      "strategies": [
+        "p4",
+        "p4",
+        "p4",
+        "p4"
+      ],
+      "cards_per_player": 6,
+      "random_wr": 1.0
+    },
+    "hypervolume": 1.3981844444444445,
+    "knee_point": {
+      "idx": 0,
+      "focus_expert_win_rate": 0.3606666666666667,
+      "trick_changes": 3.8766666666666665
+    },
+    "fairness_score": 0.3606666666666667,
+    "excitement_score": 0.6461111111111111,
+    "combined_score": 0.5033888888888889,
+    "stats": {
+      "focus_expert_wr_mean": 0.3606666666666667,
+      "focus_expert_wr_min": 0.3606666666666667,
+      "focus_expert_wr_max": 0.3606666666666667,
+      "trick_changes_mean": 3.8766666666666665,
+      "tie_rate_mean": 0.31866666666666665,
+      "n_solutions": 1
+    }
+  }
+}
