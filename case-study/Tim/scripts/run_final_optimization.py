@@ -7,11 +7,16 @@ Nimmt die besten Hyperparameter aus dem Tuning und führt eine intensive
 finale Optimierung mit mehreren Seeds parallel durch.
 """
 
+import sys
+from pathlib import Path
+
+# Add the parent directory to the path so we can import simulation
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import numpy as np
 import random
 import time
 import json
-from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import multiprocessing as mp
 
@@ -32,8 +37,8 @@ L = 4
 XL = 1.0
 XU = 10.0
 
-RESULTS_DIR = Path("results")
-PLOTS_DIR = Path("plots")
+RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
+PLOTS_DIR = Path(__file__).resolve().parent.parent / "plots"
 
 # Tuning-Ergebnisse
 TUNING_FILES = [

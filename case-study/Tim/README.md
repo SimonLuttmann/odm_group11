@@ -33,116 +33,98 @@ Diese Case Study löst das Problem der automatischen Spielbalancierung für **To
 Tim/
 │
 ├── README.md                          ← Diese Datei
-├── run_pipeline.ipynb                 ← ⚡ Steuerungs-Notebook (Führt alles aus)
-├── simulation.py                      ← Simulation Engine & Pymoo Wrapper (Shared Logic)
+├── simulation.py                      ← Simulation Engine & Pymoo Wrapper
+├── plot_config.py                     ← Plot-Styling Konfiguration
 │
-├── 01_setup_and_exploration.ipynb     ← Setup & Sanity Checks
-├── 02_optimization.ipynb              ← NSGA-II Optimierung
-├── 03_analysis.ipynb                  ← Analyse & Interpretation
-├── 04_algorithm_comparison.ipynb      ← Algorithmen-Vergleich (NSGA-II vs MOEA/D vs SMS-EMOA)
-├── 05_parameter_study.ipynb           ← Parameter-Studie (Einfluss von Deckgröße K)
+├── two_player/                        ← 2-Spieler Analyse (Basis)
+│   ├── 01_setup_and_exploration.ipynb ← Setup & Sanity Checks
+│   ├── 02_optimization.ipynb          ← NSGA-II Optimierung
+│   ├── 03_analysis.ipynb              ← Analyse & Interpretation
+│   ├── 04_algorithm_comparison.ipynb  ← NSGA-II vs MOEA/D vs SMS-EMOA
+│   └── EXPERIMENT_ANALYSIS.md         ← Detaillierte Analyse-Dokumentation
 │
-├── 06_multiplayer_setup.ipynb         ← 🆕 Multiplayer Setup (3+ Spieler)
-├── 07_multiplayer_optimization.ipynb  ← 🆕 Multiplayer Optimierung
-├── 08_multiplayer_configurations.ipynb ← 🆕 Konfigurations-Vergleich
-├── 09_multiplayer_parameter_study.ipynb ← 🆕 K-Studie für Multiplayer
-├── 10_optimal_configuration.ipynb     ← 🆕 Optimale Konfiguration (2-6 Spieler)
+├── hyperparameter_tuning/             ← Hyperparameter-Optimierung
+│   ├── 01_tuning.ipynb                ← Basis Hyperparameter Tuning
+│   ├── 02_spark.ipynb                 ← Spark-basiertes Tuning
+│   ├── 03_cloud.ipynb                 ← Cloud Hyperparameter Tuning
+│   ├── 04_full.ipynb                  ← Vollständiges Tuning
+│   ├── 05_final_optimization.ipynb    ← Finale Optimierung
+│   └── HYPERPARAMETER_TUNING_RESULTS.md
 │
-├── 11_landscape_analysis.ipynb        ← 🔬 Fitness Landscape Analysis (ELA, FDC, Ruggedness)
-├── 07_multiplayer_optimization.ipynb  ← 🆕 Multiplayer Optimierung
+├── parameter_study/                   ← Parameter-Studien
+│   └── 01_parameter_study.ipynb       ← Einfluss der Deckgröße K
 │
-├── results/                           ← Generierte Ergebnisse (2-Spieler)
-│   ├── config.json                    ← Konfiguration
-│   ├── pareto_front_X.npy             ← Lösungen (Deck-Vektoren)
-│   ├── pareto_front_F.npy             ← Objective-Werte
-│   ├── validated_front.csv            ← Validierte Metriken
-│   ├── optimization_results.json      ← Optimierungs-Statistiken
-│   ├── selected_decks.json            ← Ausgewählte repräsentative Decks
-│   ├── analysis_results.json          ← Analyse-Ergebnisse (HV etc.)
-│   └── algorithm_comparison.json      ← Vergleichs-Ergebnisse
+├── multiplayer/                       ← Multiplayer-Erweiterung (3+ Spieler)
+│   ├── 01_setup.ipynb                 ← Multiplayer Setup
+│   ├── 02_optimization.ipynb          ← Multiplayer Optimierung
+│   ├── 03_configurations.ipynb        ← Konfigurations-Vergleich
+│   ├── 04_parameter_study.ipynb       ← K-Studie für Multiplayer
+│   ├── 05_optimal_configuration.ipynb ← Optimale Konfiguration (2-6 Spieler)
+│   └── MULTIPLAYER_PRESENTATION.md
 │
-├── results/multiplayer/               ← 🆕 Multiplayer-Ergebnisse (getrennt!)
-│   ├── config.json                    ← Multiplayer-Konfiguration
-│   ├── pareto_front_X.npy
-│   ├── pareto_front_F.npy
-│   ├── validated_front.csv
-│   ├── selected_decks.json
-│   └── optimization_results.json
+├── landscape_analysis/                ← Fitness Landscape Analysis
+│   └── 01_landscape_analysis.ipynb    ← ELA, FDC, Ruggedness
 │
-├── plots/                             ← Generierte Visualisierungen (2-Spieler)
-    ├── noisiness_test.png             ← Variabilität der Metriken
-    ├── objective_space_exploration.png
-    ├── pareto_front_fast.png
-    ├── pareto_front_validated.png
-    ├── pareto_front_selected.png      ← ⭐ Hauptplot fürs Poster
-    ├── category_distributions.png
-    ├── correlation_heatmaps.png
-    ├── card_specialization.png
-    ├── algorithm_comparison_fronts.png
-    └── algorithm_comparison_metrics.png
+├── scripts/                           ← Hilfs-Skripte
+│   ├── convert_png_to_svg.py
+│   ├── evaluate_deck_scaling.py
+│   ├── run_final_optimization.py
+│   ├── run_hyperparameter_tuning.py
+│   └── run_pipeline.ipynb             ← Pipeline-Steuerung
+│
+├── results/                           ← Generierte Ergebnisse (gitignored)
+└── plots/                             ← Generierte Visualisierungen (gitignored)
 ```
 
 ---
 
 ## 🔄 Workflow
 
-### Ausführungsreihenfolge (via `run_pipeline.ipynb`)
+### Two-Player Analyse (Basis)
 
 ```
-┌─────────────────────────────────────┐
-│  01_setup_and_exploration.ipynb     │  ⏱️ < 10 Sek
-│  ─────────────────────────────────  │
-│  • Pakete installieren              │
-│  • Simulation testen                │
-│  • Sanity Checks durchführen        │
-│  • config.json erstellen            │
-└──────────────┬──────────────────────┘
+┌───────────────────────────────────────────┐
+│  two_player/01_setup_and_exploration      │  ⏱️ < 10 Sek
+│  ───────────────────────────────────────  │
+│  • Pakete installieren                    │
+│  • Simulation testen                      │
+│  • Sanity Checks durchführen              │
+└──────────────┬────────────────────────────┘
                │
                ▼
-┌─────────────────────────────────────┐
-│  02_optimization.ipynb              │  ⏱️ ~4-5 Min (High Quality)
-│  ─────────────────────────────────  │
-│  • NSGA-II Optimierung (R=500)      │
-│  • Validation mit R=1000            │
-│  • Pareto-Front speichern           │
-└──────────────┬──────────────────────┘
+┌───────────────────────────────────────────┐
+│  two_player/02_optimization               │  ⏱️ ~4-5 Min
+│  ───────────────────────────────────────  │
+│  • NSGA-II Optimierung (R=500)            │
+│  • Validation mit R=1000                  │
+└──────────────┬────────────────────────────┘
                │
                ▼
-┌─────────────────────────────────────┐
-│  03_analysis.ipynb                  │  ⏱️ < 10 Sek
-│  ─────────────────────────────────  │
-│  • Hypervolume berechnen            │
-│  • Repräsentative Decks auswählen   │
-│  • Deck-Analyse (Kategorien, Korr.) │
-│  • Poster-Plots erstellen           │
-└──────────────┬──────────────────────┘
+┌───────────────────────────────────────────┐
+│  two_player/03_analysis                   │  ⏱️ < 10 Sek
+│  ───────────────────────────────────────  │
+│  • Hypervolume berechnen                  │
+│  • Repräsentative Decks auswählen         │
+│  • Poster-Plots erstellen                 │
+└──────────────┬────────────────────────────┘
                │
                ▼
-┌─────────────────────────────────────┐
-│  04_algorithm_comparison.ipynb      │  ⏱️ ~1-2 Min (5 Seeds)
-│  ─────────────────────────────────  │
-│  • NSGA-II vs MOEA/D vs SMS-EMOA    │
-│  • Multi-Seed Validation (R=1000)   │
-│  • Boxplots zur Signifikanz         │
-└──────────────┬──────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────┐
-│  05_parameter_study.ipynb           │  ⏱️ ~3-4 Min (K=10,22,34)
-│  ─────────────────────────────────  │
-│  • Einfluss der Deckgröße (K)       │
-│  • Vergleich der Pareto-Fronten     │
-└─────────────────────────────────────┘
+┌───────────────────────────────────────────┐
+│  two_player/04_algorithm_comparison       │  ⏱️ ~1-2 Min
+│  ───────────────────────────────────────  │
+│  • NSGA-II vs MOEA/D vs SMS-EMOA          │
+│  • Multi-Seed Validation                  │
+└───────────────────────────────────────────┘
 ```
 
-### Abhängigkeiten
+### Weitere Analysen
 
-| Notebook | Benötigt | Erzeugt |
-|----------|----------|---------|
-| 01 | - | `config.json` |
-| 02 | `config.json` | `pareto_front_*.npy`, `validated_front.csv` |
-| 03 | Alles von 02 | `selected_decks.json`, Plots |
-| 04 | `config.json` | `algorithm_comparison.json` |
+| Ordner | Inhalt |
+|--------|--------|
+| `hyperparameter_tuning/` | Systematisches Hyperparameter-Tuning (lokal, Spark, Cloud) |
+| `parameter_study/` | Einfluss der Deckgröße K auf die Pareto-Front |
+| `multiplayer/` | Erweiterung auf 3+ Spieler mit verschiedenen Konfigurationen |
+| `landscape_analysis/` | Fitness Landscape Analysis (ELA, FDC, Ruggedness) |
 
 ---
 
@@ -260,19 +242,21 @@ Die folgenden Plots sind direkt für das A0-Poster verwendbar:
 
 ```bash
 # 1. In den Ordner wechseln
-cd /Users/tim.strauss/ODM/odm_sheet1/case-study/Tim
+cd case-study/Tim
 
-# 2. Pipeline ausführen (empfohlen):
-#    Öffne und starte `run_pipeline.ipynb`
-#    ODER führe die Notebooks manuell nacheinander aus:
+# 2. Two-Player Analyse (Basis):
+#    Notebooks in two_player/ der Reihe nach ausführen:
+#    - two_player/01_setup_and_exploration.ipynb
+#    - two_player/02_optimization.ipynb
+#    - two_player/03_analysis.ipynb
+#    - two_player/04_algorithm_comparison.ipynb (optional)
 
-# 3. Notebooks der Reihe nach ausführen (manuell):
-#    - 01_setup_and_exploration.ipynb
-#    - 02_optimization.ipynb
-#    - 03_analysis.ipynb
-#    - (optional) 04_algorithm_comparison.ipynb
+# 3. Weitere Analysen:
+#    - parameter_study/01_parameter_study.ipynb
+#    - multiplayer/01_setup.ipynb → ... → 05_optimal_configuration.ipynb
+#    - landscape_analysis/01_landscape_analysis.ipynb
 
-# 3. Plots für Poster in plots/ verwenden
+# 4. Plots für Poster in plots/ verwenden
 ```
 
 ---
@@ -303,7 +287,7 @@ Das Deck am "Knie" der Pareto-Front bietet den besten Kompromiss:
 *   **Trick Changes:** ~3.8 (Das Spiel ist dynamisch und nicht einseitig)
 
 ### 2. Deck-Charakteristiken (Patterns)
-Die Analyse der Deck-Strukturen (`03_analysis.ipynb`) offenbart signifikante Muster:
+Die Analyse der Deck-Strukturen (`two_player/03_analysis.ipynb`) offenbart signifikante Muster:
 *   **Fairness-Decks:** Zeigen oft eine klare Hierarchie in den Kategorien. Bestimmte Karten sind "Trümpfe", die fast immer gewinnen. Dies ermöglicht dem Experten (p4), diese Karten strategisch einzusetzen.
 *   **Excitement-Decks:** Haben homogenere Werteverteilungen. Karten sind oft ähnlich stark ("Coin-Flip" Situationen), was zu häufigen Führungswechseln führt, aber den strategischen Vorteil von p4 mindert.
 
@@ -313,7 +297,7 @@ Die Analyse der Deck-Strukturen (`03_analysis.ipynb`) offenbart signifikante Mus
 *   **Algorithmus-Wahl:** Der Vergleich über 5 unabhängige Seeds zeigt, dass **NSGA-II** und **SMS-EMOA** signifikant bessere Ergebnisse (höherer Hypervolume) liefern als MOEA/D für dieses spezifische Problem.
 
 ### 4. Parameter-Studie: Einfluss der Deckgröße (K)
-Die Untersuchung von $K \in \{10, 22, 34\}$ (`05_parameter_study.ipynb`) zeigt:
+Die Untersuchung von $K \in \{10, 22, 34\}$ (`parameter_study/01_parameter_study.ipynb`) zeigt:
 *   **Excitement skaliert mit K:** Mehr Karten führen linear zu mehr möglichen Trick Changes (Front verschiebt sich nach oben).
 *   **Fairness ist stabil:** Die erreichbare Win-Rate bleibt weitgehend unabhängig von der Deckgröße konstant (~60-85%). Fairness ist also primär eine Eigenschaft der relativen Kartenwerte, nicht der Spieldauer.
 
@@ -371,17 +355,16 @@ PLAYER_STRATEGIES = ['p4', 'p0', 'p0', 'p0']
 
 ```
 ┌─────────────────────────────────────┐
-│  06_multiplayer_setup.ipynb         │
+│  multiplayer/01_setup.ipynb         │
 │  ─────────────────────────────────  │
 │  • Spieler-Konfiguration wählen     │
 │  • Simulation testen                │
 │  • Sanity Checks durchführen        │
-│  • results/multiplayer/config.json  │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
-│  07_multiplayer_optimization.ipynb  │
+│  multiplayer/02_optimization.ipynb  │
 │  ─────────────────────────────────  │
 │  • NSGA-II Optimierung              │
 │  • Validierung mit R=1000           │
@@ -399,22 +382,20 @@ PLAYER_STRATEGIES = ['p4', 'p0', 'p0', 'p0']
 
 ```
 ┌─────────────────────────────────────────┐
-│  08_multiplayer_configurations.ipynb    │
+│  multiplayer/03_configurations.ipynb    │
 │  ─────────────────────────────────────  │
 │  Vergleicht verschiedene Konfigurationen│
 │  • 2P: 1v1 (Baseline)                   │
 │  • 3P: 1v2, 2v1                         │
 │  • 4P: 1v3, 2v2                         │
-│  → results/multiplayer_configs/         │
 └─────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────┐
-│  09_multiplayer_parameter_study.ipynb   │
+│  multiplayer/04_parameter_study.ipynb   │
 │  ─────────────────────────────────────  │
 │  Parameter-Studie: Kartenzahl K         │
 │  • K = 12, 18, 24, 30, 36               │
 │  • Korrelationsanalyse                  │
-│  → results/multiplayer_param_study/     │
 └─────────────────────────────────────────┘
 ```
 
@@ -422,13 +403,13 @@ PLAYER_STRATEGIES = ['p4', 'p0', 'p0', 'p0']
 
 | Notebook | Fragestellung |
 |----------|--------------|
-| 08 | Wie verändert sich die Spieldynamik mit mehr Spielern? |
-| 08 | Ist 2v2 fairer als 1v3? |
-| 08 | Wie stark ist der Expert-Advantage bei verschiedenen Konstellationen? |
-| 09 | Beeinflusst die Kartenzahl die Fairness bei Multiplayer? |
-| 09 | Gibt es ein optimales K für Multiplayer? |
+| `multiplayer/03_configurations` | Wie verändert sich die Spieldynamik mit mehr Spielern? |
+| `multiplayer/03_configurations` | Ist 2v2 fairer als 1v3? |
+| `multiplayer/03_configurations` | Wie stark ist der Expert-Advantage bei verschiedenen Konstellationen? |
+| `multiplayer/04_parameter_study` | Beeinflusst die Kartenzahl die Fairness bei Multiplayer? |
+| `multiplayer/04_parameter_study` | Gibt es ein optimales K für Multiplayer? |
 
-### Optimale Konfiguration (10_optimal_configuration.ipynb)
+### Optimale Konfiguration (`multiplayer/05_optimal_configuration.ipynb`)
 
 Systematische Suche nach der besten Spielerkonfiguration für K=22, L=4:
 

@@ -7,7 +7,7 @@ Run: python convert_png_to_svg.py
 import subprocess
 from pathlib import Path
 
-PLOTS_DIR = Path(__file__).parent / "plots"
+PLOTS_DIR = Path(__file__).parent.parent / "plots"
 
 def convert_with_inkscape():
     """Use Inkscape for high-quality conversion (if installed)."""

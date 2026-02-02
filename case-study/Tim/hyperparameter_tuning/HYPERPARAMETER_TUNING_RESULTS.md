@@ -555,13 +555,13 @@ Für zukünftige Optimierungen wird folgende Konfiguration empfohlen:
 
 | Datei | Beschreibung |
 |-------|--------------|
-| `results/best_hyperparameters.json` | Beste Hyperparameter pro Algorithmus |
-| `results/parallel_tuning_results.json` | Vollständige Tuning-Ergebnisse |
-| `results/final_optimization_results.json` | Finale Optimierungs-Statistiken |
-| `results/final_pareto_front_F.npy` | Objektiv-Werte der Pareto-Front |
-| `results/final_pareto_front_X.npy` | Entscheidungsvariablen der Pareto-Front |
-| `results/final_pareto_front.csv` | Pareto-Front als CSV |
-| `results/final_selected_decks.json` | Ausgewählte Deck-Konfigurationen |
+| `../results/best_hyperparameters.json` | Beste Hyperparameter pro Algorithmus |
+| `../results/parallel_tuning_results.json` | Vollständige Tuning-Ergebnisse |
+| `../results/final_optimization_results.json` | Finale Optimierungs-Statistiken |
+| `../results/final_pareto_front_F.npy` | Objektiv-Werte der Pareto-Front |
+| `../results/final_pareto_front_X.npy` | Entscheidungsvariablen der Pareto-Front |
+| `../results/final_pareto_front.csv` | Pareto-Front als CSV |
+| `../results/final_selected_decks.json` | Ausgewählte Deck-Konfigurationen |
 | `run_hyperparameter_tuning.py` | Tuning-Skript |
 | `run_final_optimization.py` | Finales Optimierungsskript |
 

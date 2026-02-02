@@ -50,29 +50,29 @@ $$\max_{x\in\mathbb{R}^{KL}} F(x) := (f_{\text{Fairness}}(x), f_{\text{Excitemen
 ### Kern-Pipeline (2-Spieler)
 
 ```
-01_setup_and_exploration.ipynb  → Setup, Simulation, Sanity Checks
+two_player/01_setup_and_exploration.ipynb → Setup, Simulation, Sanity Checks
          ↓
-02_optimization.ipynb           → NSGA-II Optimization (R=1000) + Validation (R=1500)
+two_player/02_optimization.ipynb      → NSGA-II Optimization (R=1000) + Validation (R=1500)
          ↓
-03_analysis.ipynb               → Hypervolume, Deck-Analyse, Interpretation
+two_player/03_analysis.ipynb          → Hypervolume, Deck-Analyse, Interpretation
          ↓
-04_algorithm_comparison.ipynb   → NSGA-II vs MOEA/D vs SMS-EMOA
+two_player/04_algorithm_comparison.ipynb → NSGA-II vs MOEA/D vs SMS-EMOA
          ↓
-05_parameter_study.ipynb        → Einfluss von K (Deckgröße)
+parameter_study/01_parameter_study.ipynb → Einfluss von K (Deckgröße)
 ```
 
 ### Multiplayer-Erweiterung
 
 ```
-06_multiplayer_setup.ipynb              → Multiplayer-Simulation (3+ Spieler)
+multiplayer/01_setup.ipynb            → Multiplayer-Simulation (3+ Spieler)
          ↓
-07_multiplayer_optimization.ipynb       → Optimierung für 3 Spieler (1E vs 2A)
+multiplayer/02_optimization.ipynb     → Optimierung für 3 Spieler (1E vs 2A)
          ↓
-08_multiplayer_configurations.ipynb     → Vergleich: 2P, 3P, 4P Konfigurationen
+multiplayer/03_configurations.ipynb   → Vergleich: 2P, 3P, 4P Konfigurationen
          ↓
-09_multiplayer_parameter_study.ipynb    → K-Studie für Multiplayer
+multiplayer/04_parameter_study.ipynb  → K-Studie für Multiplayer
          ↓
-10_optimal_configuration.ipynb          → Systematische Suche: 2-6 Spieler
+multiplayer/05_optimal_configuration.ipynb → Systematische Suche: 2-6 Spieler
 ```
 
 ---
@@ -83,7 +83,7 @@ $$\max_{x\in\mathbb{R}^{KL}} F(x) := (f_{\text{Fairness}}(x), f_{\text{Excitemen
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebook:** `02_optimization.ipynb`
+**Notebook:** `two_player/02_optimization.ipynb`
 
 **Ergebnisse:**
 
@@ -103,9 +103,9 @@ $$\max_{x\in\mathbb{R}^{KL}} F(x) := (f_{\text{Fairness}}(x), f_{\text{Excitemen
 - Crossover: SBX (eta=15), Mutation: PM (eta=20)
 
 **Gespeicherte Dateien:**
-- `results/pareto_front_X.npy` - Deck-Vektoren
-- `results/pareto_front_F.npy` - Objective-Werte
-- `results/validated_front.csv` - Validierte Metriken
+- `../results/pareto_front_X.npy` - Deck-Vektoren
+- `../results/pareto_front_F.npy` - Objective-Werte
+- `../results/validated_front.csv` - Validierte Metriken
 
 **Visualisierung:**
 
@@ -161,7 +161,7 @@ Diese beiden Ziele sind **inhärent konfliktär**: Je mehr Zufall, desto weniger
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebook:** `03_analysis.ipynb`
+**Notebook:** `two_player/03_analysis.ipynb`
 
 **Ergebnisse:**
 
@@ -195,7 +195,7 @@ hypervolume = hv_indicator(validated_F)  # = 3.6652
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebook:** `03_analysis.ipynb`
+**Notebook:** `two_player/03_analysis.ipynb`
 
 **Ausgewählte repräsentative Decks:**
 
@@ -273,7 +273,7 @@ Hohe Varianz → Klare Gewinner → Wenige Wechsel → Hohe Fairness
 Niedrige Varianz → Unsichere Ausgänge → Viele Wechsel → Hohe Excitement
 ```
 
-**Gespeichert in:** `results/selected_decks.json` (vollständige Deck-Vektoren)
+**Gespeichert in:** `../results/selected_decks.json` (vollständige Deck-Vektoren)
 
 ---
 
@@ -283,7 +283,7 @@ Niedrige Varianz → Unsichere Ausgänge → Viele Wechsel → Hohe Excitement
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebook:** `04_algorithm_comparison.ipynb`
+**Notebook:** `two_player/04_algorithm_comparison.ipynb`
 
 **Verglichene Algorithmen:**
 1. **NSGA-II** - Non-dominated Sorting Genetic Algorithm II
@@ -415,7 +415,7 @@ Nachteil:
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebook:** `05_parameter_study.ipynb`
+**Notebook:** `parameter_study/01_parameter_study.ipynb`
 
 **Experiment:**
 - K ∈ {10, 22, 34} getestet
@@ -519,7 +519,7 @@ Für großes K (Normalapproximation):
 
 **Status:** ✅ **ERFÜLLT**
 
-**Notebooks:** `01_setup_and_exploration.ipynb`, `02_optimization.ipynb`
+**Notebooks:** `two_player/01_setup_and_exploration.ipynb`, `two_player/02_optimization.ipynb`
 
 **Experiment:**
 The two-stage evaluation strategy was explicitly chosen:
@@ -627,12 +627,12 @@ But: Optimizer selects the BEST → systematic overestimation accumulates
 
 **Status:** ⚠️ **TEILWEISE ERFÜLLT**
 
-**Notebooks:** `03_analysis.ipynb`, `results/selected_decks.json`
+**Notebooks:** `two_player/03_analysis.ipynb`, `../results/selected_decks.json`
 
 Die drei repräsentativen Decks (Fairness-Max, Excitement-Max, Knee-Point) sind vollständig als 88-dimensionale Vektoren gespeichert und können theoretisch gespielt werden.
 
 **Verfügbar:**
-- Deck-Vektoren in `results/selected_decks.json`
+- Deck-Vektoren in `../results/selected_decks.json`
 - Jedes Deck kann mit der Simulation getestet werden
 
 **Nicht durchgeführt:**
@@ -666,7 +666,7 @@ Die Aufgabenstellung erwähnt, dass das Paper [1] ein drittes Objective enthält
 
 **Status:** ⚠️ **TEILWEISE ERFÜLLT** (im Multiplayer-Kontext)
 
-**Notebooks:** `06_multiplayer_setup.ipynb`, `08_multiplayer_configurations.ipynb`
+**Notebooks:** `multiplayer/01_setup.ipynb`, `multiplayer/03_configurations.ipynb`
 
 Im 2-Spieler-Modus mit reellen Werten sind Ties extrem selten (praktisch 0%).
 
@@ -956,14 +956,14 @@ Parameter N (Spielerzahl):
 
 | Datei | Inhalt |
 |-------|--------|
-| `results/config.json` | Problem-Konfiguration |
-| `results/pareto_front_X.npy` | Deck-Vektoren (88 × 10) |
-| `results/pareto_front_F.npy` | Objective-Werte (2 × 10) |
-| `results/validated_front.csv` | Validierte Metriken |
-| `results/analysis_results.json` | HV, ausgewählte Decks |
-| `results/selected_decks.json` | Vollständige Deck-Daten |
-| `results/algorithm_comparison.json` | Algorithmus-Vergleich |
-| `results/parameter_study_K.json` | K-Studie Ergebnisse |
+| `../results/config.json` | Problem-Konfiguration |
+| `../results/pareto_front_X.npy` | Deck-Vektoren (88 × 10) |
+| `../results/pareto_front_F.npy` | Objective-Werte (2 × 10) |
+| `../results/validated_front.csv` | Validierte Metriken |
+| `../results/analysis_results.json` | HV, ausgewählte Decks |
+| `../results/selected_decks.json` | Vollständige Deck-Daten |
+| `../results/algorithm_comparison.json` | Algorithmus-Vergleich |
+| `../results/parameter_study_K.json` | K-Studie Ergebnisse |
 
 ### Plots (2-Spieler)
 
@@ -985,10 +985,10 @@ Parameter N (Spielerzahl):
 
 | Verzeichnis | Inhalt |
 |-------------|--------|
-| `results/multiplayer/` | 3-Spieler Optimierung |
-| `results/multiplayer_configs/` | Konfigurations-Vergleich |
-| `results/multiplayer_param_study/` | K-Studie für Multiplayer |
-| `results/optimal_config/` | Optimale Konfiguration |
+| `../results/multiplayer/` | 3-Spieler Optimierung |
+| `../results/multiplayer_configs/` | Konfigurations-Vergleich |
+| `../results/multiplayer_param_study/` | K-Studie für Multiplayer |
+| `../results/optimal_config/` | Optimale Konfiguration |
 
 ---
 

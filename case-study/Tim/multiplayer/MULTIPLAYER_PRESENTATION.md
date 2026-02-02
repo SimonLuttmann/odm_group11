@@ -74,9 +74,9 @@ With fixed K=24, game length varies (12 tricks for 2P vs. 6 for 4P), affecting c
 ```
 
 **Files:**
-- `plots/optimal_config/fairness.svg`
-- `plots/optimal_config/excitement.svg`
-- `plots/optimal_config/hypervolume.svg`
+- `../plots/optimal_config/fairness.svg`
+- `../plots/optimal_config/excitement.svg`
+- `../plots/optimal_config/hypervolume.svg`
 
 **Optional captions:**
 - **Fairness:** 83% → 46% (more competition)
@@ -122,7 +122,7 @@ With fixed K=24, game length varies (12 tricks for 2P vs. 6 for 4P), affecting c
 
 ## SLIDE 2: Fairness Comparison (40 seconds)
 
-### Plot: `plots/optimal_config/fairness.svg`
+### Plot: `../plots/optimal_config/fairness.svg`
 
 ### What to say:
 > "This plot shows the **Fairness Score** - which is simply the Focus Expert's win rate.
@@ -137,7 +137,7 @@ With fixed K=24, game length varies (12 tricks for 2P vs. 6 for 4P), affecting c
 
 ## SLIDE 3: Excitement Comparison (30 seconds)
 
-### Plot: `plots/optimal_config/excitement.svg`
+### Plot: `../plots/optimal_config/excitement.svg`
 
 ### What to say:
 > "The **Excitement Score** measures how many lead changes occur, normalized by the number of tricks.
@@ -150,7 +150,7 @@ With fixed K=24, game length varies (12 tricks for 2P vs. 6 for 4P), affecting c
 
 ## SLIDE 4: Conclusion (30 seconds)
 
-### Plot: `plots/optimal_config/combined.svg`
+### Plot: `../plots/optimal_config/combined.svg`
 
 ### What to say:
 > "The **Combined Score** balances fairness and excitement. 
@@ -163,7 +163,7 @@ With fixed K=24, game length varies (12 tricks for 2P vs. 6 for 4P), affecting c
 
 ## ALTERNATIVE: Single Slide Version (if time is short)
 
-### Plot: `plots/optimal_config/combined.svg` OR `plots/multiplayer_configs/pareto_fronts_comparison.svg`
+### Plot: `../plots/optimal_config/combined.svg` OR `../plots/multiplayer_configs/pareto_fronts_comparison.svg`
 
 ### Compressed Script (60 seconds):
 > "We extended to multiplayer with 2-4 players. Key findings:
@@ -409,13 +409,13 @@ With more experts:
 
 | Graphic | Path | Usage |
 |---------|------|-------|
-| Pareto Fronts Comparison | `plots/multiplayer_configs/pareto_fronts_comparison.svg` | Main graphic Option A |
-| Fairness Score | `plots/optimal_config/fairness.svg` | Score comparison |
-| Excitement Score | `plots/optimal_config/excitement.svg` | Score comparison |
-| Combined Score | `plots/optimal_config/combined.svg` | Score comparison |
-| Hypervolume | `plots/optimal_config/hypervolume.svg` | Score comparison |
-| Single 3P Front | `plots/multiplayer/pareto_front_validated.svg` | Backup |
-| Metrics Boxplots | `plots/multiplayer_configs/metrics_boxplots.svg` | For Q&A |
+| Pareto Fronts Comparison | `../plots/multiplayer_configs/pareto_fronts_comparison.svg` | Main graphic Option A |
+| Fairness Score | `../plots/optimal_config/fairness.svg` | Score comparison |
+| Excitement Score | `../plots/optimal_config/excitement.svg` | Score comparison |
+| Combined Score | `../plots/optimal_config/combined.svg` | Score comparison |
+| Hypervolume | `../plots/optimal_config/hypervolume.svg` | Score comparison |
+| Single 3P Front | `../plots/multiplayer/pareto_front_validated.svg` | Backup |
+| Metrics Boxplots | `../plots/multiplayer_configs/metrics_boxplots.svg` | For Q&A |
 
 ---
 
