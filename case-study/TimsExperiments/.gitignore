@@ -1,0 +1,12 @@
+# Plots können aus den Notebooks regeneriert werden
+plots/
+
+# Results können aus den Notebooks/Skripten regeneriert werden
+results/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
